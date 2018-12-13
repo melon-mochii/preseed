@@ -21,24 +21,20 @@ sudo apt install i3 nitrogen xbacklight alsa-utils pulseaudio -y
 # clone my dotfiles into /tmp
 git clone https://github.com/melon-mochii/dotfiles /tmp && cd /tmp/dotfiles
 # overwrite default i3 config with my config
-cat config > ~/.config/i3
+cat config > /home/a/.config/i3
 # install system font
 sudo cp micross.ttf /usr/share/fonts/truetype/
 # delete i3status config (which is in the incorrect location)
 sudo rm -rf /etc/i3status.conf
 # copy my i3status config to the correct location
-cp i3status.conf ~/.i3status.conf
+cp i3status.conf /home/a/.i3status.conf
 # overwrite default .Xresources with my .Xresources
-cp .Xresources ~/.Xresources
+cp .Xresources /home/a/.Xresources
 # make wallpaper folder
 mkdir ~/Pictures/wallpapers
 # copy wallpapers to wallpaper folder
-cp wallpaper{4:3, 16:9} ~/Pictures/wallpapers
-# disable exim4 because who cares
-sudo systemctl disable exim4
-sudo systemctl stop exim4
+cp wallpaper{4:3, 16:9} /home/a/Pictures/wallpapers
 # disable terminal mail thing
 sudo sed -i -e 's/session    optional   pam_mail.so standard/#session    optional   pam_mail.so standard/g' /etc/pam.d/login
-sudo sed -i -e 's/session    optional     pam_mail.so standard noenv/#session    optional     pam_mail.so standard noenv/g' /etc/pam.d/sshd
 
 #exec true
