@@ -1,1 +1,1 @@
-pre-configuration for my debian install
+### my personal pre-configuration for a debian installation 
