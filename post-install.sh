@@ -6,8 +6,6 @@ passwd -d a
 rm /etc/motd /etc/update-motd.d/10-uname
 # allow sudo group to use sudo without password
 sed -i -e 's/%sudo.*ALL$/%sudo ALL=(ALL:ALL) NOPASSWD:ALL/g' /etc/sudoers
-# auto login
-sed -i -e 's/#autologin-user=/autologin-user=a/g' /etc/lightdm/lightdm.conf
 # add user a to input group
 usermod -aG input a
 # grub quiet boot
@@ -17,7 +15,14 @@ sed -i -e 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
 sed -i -e 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet fastboot loglevel=3 vt.global_cursor_default=0"/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 # install stuff for the system
-sudo apt install i3 nitrogen xbacklight alsa-utils pulseaudio -y
+sudo apt install i3 lightdm nitrogen xbacklight alsa-utils pulseaudio vim chromium -y
+# auto login
+sed -i -e 's/#autologin-user=/autologin-user=a/g' /etc/lightdm/lightdm.conf
+# set i3 as default wm
+sed -i 's/# user-session = Session to load for users/user-session = i3/g' /etc/lightdm/lightdm.conf
+sed -i 's/# autologin-session = Session to load for automatic login (overrides user-session)/autologin-session = i3/g' /etc/lightdm/lightdm.conf
+# automatically start lightdm on boot
+systemctl enable lightdm
 # clone my dotfiles into /tmp
 git clone https://github.com/melon-mochii/dotfiles /tmp && cd /tmp/dotfiles
 # overwrite default i3 config with my config
@@ -34,6 +39,8 @@ cp .Xresources /home/a/.Xresources
 mkdir ~/Pictures/wallpapers
 # copy wallpapers to wallpaper folder
 cp wallpaper{4:3, 16:9} /home/a/Pictures/wallpapers
+# copy x window server config to home folder
+cp /etc/X11/xinit/xinitrc /home/a/.xinitrc
 # disable terminal mail thing
 sudo sed -i -e 's/session    optional   pam_mail.so standard/#session    optional   pam_mail.so standard/g' /etc/pam.d/login
 
