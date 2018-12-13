@@ -17,7 +17,7 @@ sed -i -e 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
 sed -i -e 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet fastboot loglevel=3 vt.global_cursor_default=0"/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 # install stuff for the system
-sudo apt install i3 nitrogen xbacklight alsa-utils pulseaudio
+sudo apt install i3 nitrogen xbacklight alsa-utils pulseaudio -y
 # clone my dotfiles into /tmp
 git clone https://github.com/melon-mochii/dotfiles /tmp && cd /tmp/dotfiles
 # overwrite default i3 config with my config
