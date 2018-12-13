@@ -28,6 +28,8 @@ sudo cp micross.ttf /usr/share/fonts/truetype/
 sudo rm -rf /etc/i3status.conf
 # copy my i3status config to the correct location
 cp i3status.conf ~/.i3status.conf
+# overwrite default .Xresources with my .Xresources
+cp .Xresources ~/.Xresources
 # make wallpaper folder
 mkdir ~/Pictures/wallpapers
 # copy wallpapers to wallpaper folder
