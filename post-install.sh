@@ -14,8 +14,6 @@ sed -i -e 's/quiet_boot=\"0\"/quiet_boot=\"1\"/g' /etc/grub.d/10_linux
 sed -i -e 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
 sed -i -e 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet fastboot loglevel=3 vt.global_cursor_default=0"/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
-# install stuff for the system
-sudo apt install i3 lightdm nitrogen xbacklight alsa-utils pulseaudio vim chromium -y
 # auto login
 sed -i -e 's/#autologin-user=/autologin-user=a/g' /etc/lightdm/lightdm.conf
 # set i3 as default wm
