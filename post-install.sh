@@ -37,7 +37,7 @@ cp i3status.conf /home/a/.i3status.conf
 # overwrite default .Xresources with my .Xresources
 cp .Xresources /home/a/.Xresources
 # make wallpaper folder
-mkdir ~/Pictures/wallpapers
+mkdir /home/a/Pictures/wallpapers
 # copy wallpapers to wallpaper folder
 cp wallpaper{4:3, 16:9} /home/a/Pictures/wallpapers
 rm "/home/a/launch this right after the install worked okay thanks"
