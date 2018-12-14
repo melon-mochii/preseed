@@ -29,7 +29,7 @@ cat > "/home/a/launch this right after the install worked okay thanks" <<EOF
 #!/bin/sh
 echo "doing stuff"
 # clone my dotfiles into /tmp
-git clone https://github.com/melon-mochii/dotfiles /tmp && cd /tmp/dotfiles
+git clone https://github.com/melon-mochii/dotfiles /tmp/dotfiles && cd /tmp/dotfiles
 # overwrite default i3 config with my config
 cp config /home/a/.config/i3
 # copy my i3status config to the correct location
