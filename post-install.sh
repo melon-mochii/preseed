@@ -25,7 +25,7 @@ systemctl enable lightdm
 sudo cp micross.ttf /usr/share/fonts/truetype/
 # disable terminal mail thing
 sudo sed -i -e 's/session    optional   pam_mail.so standard/#session    optional   pam_mail.so standard/g' /etc/pam.d/login
-cat > "/home/a/launch this right after the install worked okay thanks" <<EOF
+cat > "/home/a/launch_this" <<EOF
 #!/bin/sh
 echo "doing stuff"
 # clone my dotfiles into /tmp
@@ -39,11 +39,11 @@ cp .Xresources /home/a/.Xresources
 # make wallpaper folder
 mkdir /home/a/Pictures/wallpapers
 # copy wallpapers to wallpaper folder
-cp wallpaper{4:3, 16:9} /home/a/Pictures/wallpapers
-rm "/home/a/launch this right after the install worked okay thanks"
+cp wallpaper4:3.png /home/a/Pictures/wallpapers
+rm "/home/a/launch_this"
 echo "done doing stuff"
 EOF
-chmod +x "/home/a/launch this right after the install worked okay thanks"
-chown a:a "/home/launch this right after the install worked okay thanks"
+chmod +x "/home/a/launch_this"
+chown a:a "/home/launch_this"
 
 #exec true
