@@ -23,8 +23,10 @@ sed -i 's/# autologin-session = Session to load for automatic login (overrides u
 systemctl enable lightdm
 # clone my dotfiles into /tmp
 git clone https://github.com/melon-mochii/dotfiles /tmp && cd /tmp/dotfiles
+# make i3 config directory
+mkdir /home/a/.config/i3
 # overwrite default i3 config with my config
-cat config > /home/a/.config/i3
+cp config /home/a/.config/i3
 # install system font
 sudo cp micross.ttf /usr/share/fonts/truetype/
 # delete i3status config (which is in the incorrect location)
