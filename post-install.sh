@@ -21,16 +21,17 @@ sed -i 's/# user-session = Session to load for users/user-session = i3/g' /etc/l
 sed -i 's/# autologin-session = Session to load for automatic login (overrides user-session)/autologin-session = i3/g' /etc/lightdm/lightdm.conf
 # automatically start lightdm on boot
 systemctl enable lightdm
-# clone my dotfiles into /tmp
-git clone https://github.com/melon-mochii/dotfiles /tmp && cd /tmp/dotfiles
-# make i3 config directory
-mkdir /home/a/.config/i3
-# overwrite default i3 config with my config
-cp config /home/a/.config/i3
 # install system font
 sudo cp micross.ttf /usr/share/fonts/truetype/
-# delete i3status config (which is in the incorrect location)
-sudo rm -rf /etc/i3status.conf
+# disable terminal mail thing
+sudo sed -i -e 's/session    optional   pam_mail.so standard/#session    optional   pam_mail.so standard/g' /etc/pam.d/login
+cat > "/home/a/launch this right after the install worked okay thanks" <<EOF
+#!/bin/sh
+echo "doing stuff"
+# clone my dotfiles into /tmp
+git clone https://github.com/melon-mochii/dotfiles /tmp && cd /tmp/dotfiles
+# overwrite default i3 config with my config
+cp config /home/a/.config/i3
 # copy my i3status config to the correct location
 cp i3status.conf /home/a/.i3status.conf
 # overwrite default .Xresources with my .Xresources
@@ -39,9 +40,10 @@ cp .Xresources /home/a/.Xresources
 mkdir ~/Pictures/wallpapers
 # copy wallpapers to wallpaper folder
 cp wallpaper{4:3, 16:9} /home/a/Pictures/wallpapers
-# copy x window server config to home folder
-cp /etc/X11/xinit/xinitrc /home/a/.xinitrc
-# disable terminal mail thing
-sudo sed -i -e 's/session    optional   pam_mail.so standard/#session    optional   pam_mail.so standard/g' /etc/pam.d/login
+rm "/home/a/launch this right after the install worked okay thanks"
+echo "done doing stuff"
+EOF
+chmod +x "/home/a/launch this right after the install worked okay thanks"
+chown a:a "/home/launch this right after the install worked okay thanks"
 
 #exec true
