@@ -25,6 +25,9 @@ systemctl enable lightdm
 sudo cp micross.ttf /usr/share/fonts/truetype/
 # disable terminal mail thing
 sudo sed -i -e 's/session    optional   pam_mail.so standard/#session    optional   pam_mail.so standard/g' /etc/pam.d/login
+# install plugin manager for vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cat > "/home/a/launch_this" <<EOF
 #!/bin/sh
 echo "doing stuff"
