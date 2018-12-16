@@ -43,15 +43,7 @@ cp wallpaper4:3.png /home/a/Pictures/wallpapers
 # clone vim source 
 cd /usr && sudo git clone https://github.com/vim/vim.git && cd vim  
 # compile vim with python support
-sudo ./configure --with-features=huge \
---enable-multibyte \
---enable-pythoninterp=yes \
---with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu/ \
---enable-python3interp=yes \
---with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu/ \
---enable-gui=gtk2 \
---enable-cscope \ 
---prefix=/usr/local/
+sudo ./configure --with-features=huge --enable-multibyte --enable-pythoninterp=yes --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu/ --enable-python3interp=yes --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu --enable-gui=gtk2 --enable-cscope --prefix=/usr/local/
 # install it
 cd /usr/vim && sudo checkinstall
 # set vim as default editor
