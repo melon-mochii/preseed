@@ -68,7 +68,17 @@ chmod +x "/home/a/launch_this"
 chown a:a "/home/launch_this"
 
 cat > "/home/a/.vimrc" <<EOF
+set number
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set backspace=indent,eol,start
+
+call plug\#begin('~/.vim/plugged')
+
 Plug 'anned20/vimsence'
+
+call plug\#end()
 EOF
 
 #exec true
