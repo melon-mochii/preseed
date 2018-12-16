@@ -49,4 +49,8 @@ EOF
 chmod +x "/home/a/launch_this"
 chown a:a "/home/launch_this"
 
+cat > "/home/a/.vimrc" <<EOF
+Plug 'anned20/vimsence'
+EOF
+
 #exec true
