@@ -25,9 +25,6 @@ systemctl enable lightdm
 sudo cp micross.ttf /usr/share/fonts/truetype/
 # disable terminal mail thing
 sudo sed -i -e 's/session    optional   pam_mail.so standard/#session    optional   pam_mail.so standard/g' /etc/pam.d/login
-# install plugin manager for vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 cat > "/home/a/launch_this" <<EOF
 #!/bin/sh
 echo "doing stuff"
@@ -43,6 +40,29 @@ cp .Xresources /home/a/.Xresources
 mkdir /home/a/Pictures/wallpapers
 # copy wallpapers to wallpaper folder
 cp wallpaper4:3.png /home/a/Pictures/wallpapers
+# clone vim source 
+cd /usr && sudo git clone https://github.com/vim/vim.git && cd vim  
+# compile vim with python support
+sudo ./configure --with-features=huge \
+--enable-multibyte \
+--enable-pythoninterp=yes \
+--with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu/ \
+--enable-python3interp=yes \
+--with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu/ \
+--enable-gui=gtk2 \
+--enable-cscope \ 
+--prefix=/usr/local/
+# install it
+cd /usr/vim && sudo checkinstall
+# set vim as default editor
+sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
+sudo update-alternatives --set editor /usr/local/bin/vim
+sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
+sudo update-alternatives --set vi /usr/local/bin/vim   
+sudo make VIMRUNTIMEDIR=/usr/local/share/vim/vim81 
+# install plugin manager for vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 rm "/home/a/launch_this"
 echo "done doing stuff"
 EOF
