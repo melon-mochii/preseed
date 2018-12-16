@@ -36,6 +36,12 @@ cp config /home/a/.config/i3
 cp i3status.conf /home/a/.i3status.conf
 # overwrite default .Xresources with my .Xresources
 cp .Xresources /home/a/.Xresources
+# make pictures folder
+mkdir /home/a/Pictures
+# make documents folder 
+mkdir /home/a/Documents
+# make music folder 
+mkdir /home/a/Music
 # make wallpaper folder
 mkdir /home/a/Pictures/wallpapers
 # copy wallpapers to wallpaper folder
@@ -45,7 +51,7 @@ cd /usr && sudo git clone https://github.com/vim/vim.git && cd vim
 # compile vim with python support
 sudo ./configure --with-features=huge --enable-multibyte --enable-pythoninterp=yes --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu/ --enable-python3interp=yes --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu --enable-gui=gtk2 --enable-cscope --prefix=/usr/local/
 # install it
-cd /usr/vim && sudo checkinstall
+cd /usr/vim && sudo make install
 # set vim as default editor
 sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
 sudo update-alternatives --set editor /usr/local/bin/vim
