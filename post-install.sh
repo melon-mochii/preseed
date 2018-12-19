@@ -23,7 +23,7 @@ sed -i 's/# autologin-session = Session to load for automatic login (overrides u
 systemctl enable lightdm
 # disable terminal mail thing
 sudo sed -i -e 's/session    optional   pam_mail.so standard/#session    optional   pam_mail.so standard/g' /etc/pam.d/login
-# add 32 bit architecture for wine
+sudo sed -i -e 's/session    optional     pam_mail.so standard noenv/#session    optional     pam_mail.so standard noenv/g' /etc/pam.d/sshd# add 32 bit architecture for wine
 sudo dpkg --add-architecture i386
 cat > "/home/a/launch_this" <<EOF
 #!/bin/sh
