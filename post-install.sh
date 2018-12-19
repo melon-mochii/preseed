@@ -21,8 +21,6 @@ sed -i 's/# user-session = Session to load for users/user-session = i3/g' /etc/l
 sed -i 's/# autologin-session = Session to load for automatic login (overrides user-session)/autologin-session = i3/g' /etc/lightdm/lightdm.conf
 # automatically start lightdm on boot
 systemctl enable lightdm
-# install system font
-sudo cp micross.ttf /usr/share/fonts/truetype/
 # disable terminal mail thing
 sudo sed -i -e 's/session    optional   pam_mail.so standard/#session    optional   pam_mail.so standard/g' /etc/pam.d/login
 # add 32 bit architecture for wine
@@ -32,6 +30,8 @@ cat > "/home/a/launch_this" <<EOF
 echo "doing stuff"
 # clone my dotfiles into /tmp
 git clone https://github.com/melon-mochii/dotfiles /tmp/dotfiles && cd /tmp/dotfiles
+# install system font
+sudo cp micross.ttf /usr/share/fonts/truetype/
 # overwrite default i3 config with my config
 cp config /home/a/.config/i3
 # copy my i3status config to the correct location
