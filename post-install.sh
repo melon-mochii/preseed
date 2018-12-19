@@ -58,16 +58,25 @@ cd /usr/vim && sudo make install
 sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
 sudo update-alternatives --set editor /usr/local/bin/vim
 sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
-sudo update-alternatives --set vi /usr/local/bin/vim   
+sudo update-alternatives --set vi /usr/local/bin/vim
 sudo make VIMRUNTIMEDIR=/usr/local/share/vim/vim81 
 # install plugin manager for vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# download fish source code
+curl -fLo /tmp/fish.tar.gz --create-dirs https://github.com/fish-shell/fish-shell/releases/download/2.7.1/fish-2.7.1.tar.gz
+# extract it
+tar xzf fish.tar.gz
+# cd into it
+cd fish-2.7.1
+# configure, compile, and install
+./configure; make; sudo make install
+# set default shell as fish
+chsh -s /usr/bin/fish
 rm "/home/a/launch_this"
 echo "done doing stuff"
 EOF
 chmod +x "/home/a/launch_this"
-chown a:a "/home/launch_this"
+chown a:a "/home/a/launch_this"
 
 cat > "/home/a/.vimrc" <<EOF
 set number
@@ -76,11 +85,11 @@ set shiftwidth=4
 set expandtab
 set backspace=indent,eol,start
 
-call plug\#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged')
 
 Plug 'anned20/vimsence'
 
-call plug\#end()
+call plug#end()
 EOF
 
 #exec true
