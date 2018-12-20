@@ -65,7 +65,7 @@ cd fish-2.7.1
 # configure, compile, and install
 ./configure; make; sudo make install
 # set default shell as fish
-chsh -s /usr/bin/fish
+chsh -s 'which fish'
 rm "/home/a/launch_this"
 echo "done doing stuff"
 EOF
