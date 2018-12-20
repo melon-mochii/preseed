@@ -38,12 +38,6 @@ cp config /home/a/.config/i3
 cp i3status.conf /home/a/.i3status.conf
 # overwrite default .Xresources with my .Xresources
 cp .Xresources /home/a/.Xresources
-# make pictures folder
-mkdir /home/a/Pictures
-# make documents folder 
-mkdir /home/a/Documents
-# make music folder 
-mkdir /home/a/Music
 # make wallpaper folder
 mkdir /home/a/Pictures/wallpapers
 # copy wallpapers to wallpaper folder
