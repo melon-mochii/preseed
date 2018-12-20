@@ -66,8 +66,11 @@ cd fish-2.7.1
 ./configure; make; sudo make install
 # remove pam authentication requirements
 sudo sed -i 's/auth       required   pam_shells.so/auth       sufficient   pam_shells.so/g' /etc/pam.d/chsh
+# make fish a valid shell
+echo '/usr/local/bin/fish' | sudo tee -a /etc/shells
 # set default shell as fish
 chsh -s `which fish`
+# remove this file
 rm "/home/a/launch_this"
 echo "done doing stuff"
 EOF
